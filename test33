@@ -1,2 +1,30 @@
-asidjasidjaidjiajsdijasda
-dasdsas
+import random
+import sys
+import time
+
+# ANSI escape sequences for colored text
+COLORS = [
+    "\033[91m",  # Red
+    "\033[92m",  # Green
+    "\033[93m",  # Yellow
+    "\033[94m",  # Blue
+    "\033[95m",  # Magenta
+    "\033[96m",  # Cyan
+    "\033[97m",  # White
+]
+
+RESET_COLOR = "\033[0m"  # Reset to default color
+
+# 텍스트를 랜덤 색깔로 출력하는 함수
+def print_colored_text(text):
+    for char in text:
+        color = random.choice(COLORS)  # 랜덤 색깔 선택
+        sys.stdout.write(f"{color}{char}{RESET_COLOR}")
+        sys.stdout.flush()
+        time.sleep(0.1)  # 타이핑 애니메이션처럼 딜레이 추가
+    print()
+
+# 실행 시 보여줄 텍스트
+text = "간지나는 컬러풀 텍스트를 보여줄게요!"
+
+print_colored_text(text)
